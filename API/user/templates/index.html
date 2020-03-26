@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Index</title>
+	{% load staticfiles %}
+	<link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}"/>
+</head>
+<body>
+<form method="POST" class="post-form" action="/registro/" alignv="center">
+	{% csrf_token %}
+	<table align="right">
+	<div class="container" >
+		<br>
+		<div class="form-group row">
+			<label class="col-sm-1 col-form-label"></label>
+			<div class="col-sm-4">
+				<h3>Formulário Facebook</h3>
+			</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Usuario Email:</label>
+			<div class="col-sm-4">{{form.userEmail}}</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Usuario Senha:</label>
+			<div class="col-sm-4" type="password">{{form.userSenha}}</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label"></label>
+			<div class="col-sm-4">
+			<button  class="btn btn-primary">Enviar</button>
+			</div>
+		</div>
+</div>
+</table>
+</form>
+</body>
+</html>
+</form>
+</body>
+</html>

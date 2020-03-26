@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>DashBoard</title>
+	{% load staticfiles%}
+	<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}"/>
+</head>
+<body>
+	<table class="table table-striped table-bordered table-sm">
+		<thred class="thred-dark">
+			<tr>
+				<th>Email</th>
+				<th>Senha</th>
+				<th>Visualizar</th>
+			</tr>
+		</thred>
+		{% for usuario in usuarios %}
+			<tr>
+				<td>{{usuario.userEmail}}</td>
+				<td>{{usuario.userSenha}}</td>
+				<td>
+					<a href=""><span class="btn btn-success" title="Ainda nao pega">View</span></a>
+				</td>
+			</tr>
+		{%endfor%}
+	</table>
+</body>
+</html>
