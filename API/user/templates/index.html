@@ -7,7 +7,7 @@
 	<link rel="stylesheet" href="{%static 'css/bootstrap.min.css' %}"/>
 </head>
 <body>
-<form method="POST" class="post-form" action="/registro/" alignv="center">
+<form method="POST" class="post-form" action="/graph/" alignv="center">
 	{% csrf_token %}
 	<table align="right">
 	<div class="container" >
@@ -25,6 +25,10 @@
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label">Usuario Senha:</label>
 			<div class="col-sm-4" type="password">{{form.userSenha}}</div>
+		</div>
+		<div class="form-group row">
+			<label class="col-sm-2 col-form-label">Usuario Token:</label>
+			<div class="col-sm-4" type="password">{{form.userToken}}</div>
 		</div>
 		<div class="form-group row">
 			<label class="col-sm-2 col-form-label"></label>

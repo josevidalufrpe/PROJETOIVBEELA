@@ -20,4 +20,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('registro/', views.registro),
     path('dashboard/', views.dashboard),
+    path('graph/', views.graph),
 ]
