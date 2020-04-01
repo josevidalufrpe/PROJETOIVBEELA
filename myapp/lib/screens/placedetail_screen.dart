@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:beela/models/place_model.dart';
-import 'package:beela/services/place_service.dart';
+import 'package:myapp/models/place_model.dart';
+import 'package:myapp/services/place_service.dart';
 
 
 

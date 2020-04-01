@@ -1,4 +1,4 @@
-import 'package:beela/models/place_model.dart';
+import 'package:myapp/models/place_model.dart';
 import "package:http/http.dart" as http;
 import 'dart:convert';
 class PlaceService{

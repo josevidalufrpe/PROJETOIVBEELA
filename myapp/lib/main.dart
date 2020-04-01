@@ -1,4 +1,4 @@
-import 'package:beela/screens/places_screen.dart';
+import 'package:myapp/screens/places_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'models/item.dart';
