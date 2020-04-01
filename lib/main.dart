@@ -1,3 +1,4 @@
+import 'package:beela/screens/places_screen.dart';
 import 'package:flutter/material.dart';
 
 import 'models/item.dart';
@@ -13,9 +14,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
    
-        primarySwatch: Colors.yellow,
+        primarySwatch: Colors.green,
       ),
-      home: HomePage(),
+      home: PlacesScreen(),
       
     );
   }
