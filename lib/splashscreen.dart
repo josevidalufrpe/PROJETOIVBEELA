@@ -14,7 +14,7 @@ class SplashPageState extends State<SplashPage> {
   }
 
   startSplashScreenTime() async {
-    var _duration = new Duration(seconds: 4);
+    var _duration = new Duration(seconds: 3);
     return new Timer(_duration, navigationToNextPage);
   }
 
@@ -29,17 +29,21 @@ class SplashPageState extends State<SplashPage> {
     SystemChrome.setEnabledSystemUIOverlays([]);
 
     return Scaffold(
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.black54,
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Image.asset("images/facebook.png", height: 100,),
+            Image.asset("images/logo.png", height: 300,),
             Text(
-                "Beela",
+                "BeelaApp",
               style: TextStyle(
                 fontWeight: FontWeight.w500,
-                color: Colors.lightGreen[400]
+                fontSize: 50,
+                decoration: TextDecoration.underline,
+                fontStyle: FontStyle.italic,
+                //height: 50,
+                color: Colors.lightGreenAccent[400]
               ),
             )
           ],
