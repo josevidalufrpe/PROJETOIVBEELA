@@ -1,90 +1,83 @@
-import 'package:myapp/screens/places_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_facebook_login/flutter_facebook_login.dart';
+import 'package:http/http.dart' as http;
+import 'dart:convert' as JSON;
+import 'dart:async';
 
-import 'models/item.dart';
+void main() => runApp(new MyApp());
 
-void main() => runApp(MyApp());
+class MyApp extends StatefulWidget {
+  @override
+  _MyAppState createState() => new _MyAppState();
+}
 
-class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
+class _MyAppState extends State<MyApp> {
+  static final FacebookLogin facebookSignIn = new FacebookLogin();
+
+  String _message = 'Log in/out by pressing the buttons below.';
+
+  Future<Null> _login() async {
+    final FacebookLoginResult result =
+    await facebookSignIn.logInWithReadPermissions(['email']);
+
+    switch (result.status) {
+      case FacebookLoginStatus.loggedIn:
+        final FacebookAccessToken accessToken = result.accessToken;
+        _showMessage('''
+         Logged in!
+         
+         Token: ${accessToken.token}
+         User id: ${accessToken.userId}
+         Expires: ${accessToken.expires}
+         Permissions: ${accessToken.permissions}
+         Declined permissions: ${accessToken.declinedPermissions}
+         ''');
+        break;
+      case FacebookLoginStatus.cancelledByUser:
+        _showMessage('Login cancelled by the user.');
+        break;
+      case FacebookLoginStatus.error:
+        _showMessage('Something went wrong with the login process.\n'
+            'Here\'s the error Facebook gave us: ${result.errorMessage}');
+        break;
+    }
+  }
+
+  Future<Null> _logOut() async {
+    await facebookSignIn.logOut();
+    _showMessage('Logged out.');
+  }
+
+  void _showMessage(String message) {
+    setState(() {
+      _message = message;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-   
-        primarySwatch: Colors.green,
+    return new MaterialApp(
+      home: new Scaffold(
+        appBar: new AppBar(
+          title: new Text('Plugin example app'),
+        ),
+        body: new Center(
+          child: new Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              new Text(_message),
+              new RaisedButton(
+                onPressed: _login,
+                child: new Text('Log in'),
+              ),
+              new RaisedButton(
+                onPressed: _logOut,
+                child: new Text('Logout'),
+              ),
+            ],
+          ),
+        ),
       ),
-      home: PlacesScreen(),
-      
     );
   }
 }
-
-
-class HomePage extends StatefulWidget {
-
-  var items = new List<Item>();
-  
-  HomePage(){
-
-    items = [];
-    items.add(Item(title:"Item 1",done:false));
-    items.add(Item(title:"Item 2",done:true));
-    items.add(Item(title:"Item 3",done:false));
-
-
-  }
-
-
-  @override
-  _HomePageState createState() => _HomePageState();
-}
-
-class _HomePageState extends State<HomePage> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-
-      appBar: AppBar(
-        title: Text("BeeLa App"),
-
-      ),
-      body: ListView.builder(
-        itemCount: widget.items.length,
-        itemBuilder: (BuildContext context, int index){
-            
-            final item = widget.items[index];
-            
-            return CheckboxListTile(
-              
-              title: Text(item.title),
-              key: Key(item.title),
-              value: item.done,
-
-              onChanged: (value){
-
-                setState(() {
-                 
-                 item.done = value;
-   
-                });
-                
-               
-              },
-            
-            
-            );
-
-        },
-
-
-      
-      )
-
-
-    );
-  }
-}
-
