@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
+import 'dart:async';
 
 
 class HomePage extends StatefulWidget {
@@ -12,6 +13,7 @@ class HomePage extends StatefulWidget {
 
 class HomePageState extends State<HomePage> {
   bool _isLoggedIn = false;
+  String _message = 'Log in/out by pressing the buttons below';
   Map userProfile;
   final facebookLogin = FacebookLogin();
 
@@ -20,22 +22,23 @@ class HomePageState extends State<HomePage> {
 
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
-        final token = result.accessToken.token;
-        final graphResponse = await http.get(
-            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
-        final profile = JSON.jsonDecode(graphResponse.body);
-        print(profile);
-        setState(() {
-          userProfile = profile;
-          _isLoggedIn = true;
-        });
+        final FacebookAccessToken  accessToken = result.accessToken;
+        _showMessage('''
+         Logged in!
+         Token: ${accessToken.token}
+         User id: ${accessToken.userId}
+         Expires: ${accessToken.expires}
+         Permissions: ${accessToken.permissions}
+         Declined permissions: ${accessToken.declinedPermissions}''');
+
         break;
 
       case FacebookLoginStatus.cancelledByUser:
-        setState(() => _isLoggedIn = false);
+        _showMessage('Login cancelled by the user.');
         break;
       case FacebookLoginStatus.error:
-        setState(() => _isLoggedIn = false);
+        _showMessage('Something went wrong with the login process.\n'
+            'Here\'s the error Facebook gave us: ${result.errorMessage}');
         break;
     }
   }
@@ -45,6 +48,11 @@ class HomePageState extends State<HomePage> {
       _isLoggedIn = false;
     });
 
+  }
+  void _showMessage(String message) {
+    setState(() {
+      _message = message;
+    });
   }
 
 
