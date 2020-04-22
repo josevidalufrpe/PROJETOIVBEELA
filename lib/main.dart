@@ -5,7 +5,8 @@ import 'package:flutter/material.dart';
 
 
 
-void main() => runApp(new MyApp());
+void main() => runApp(new MyApp(
+));
 
 
 
@@ -13,7 +14,7 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
 
   @override
- Widget build(BuildContext context) {
+  Widget build(BuildContext context) {
 
     return new MaterialApp(
       debugShowCheckedModeBanner: false,
@@ -26,5 +27,6 @@ class MyApp extends StatelessWidget {
 
   }
 }
+
 
 

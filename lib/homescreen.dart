@@ -12,139 +12,80 @@ class HomePage extends StatefulWidget {
 }
 
 class HomePageState extends State<HomePage> {
+
   bool _isLoggedIn = false;
-  String _message = 'Log in/out by pressing the buttons below';
   Map userProfile;
   final facebookLogin = FacebookLogin();
 
-  _loginWithFB() async {
+
+  _loginWithFB() async{
     final result = await facebookLogin.logInWithReadPermissions(['email']);
 
     switch (result.status) {
       case FacebookLoginStatus.loggedIn:
-        final FacebookAccessToken  accessToken = result.accessToken;
-        _showMessage('''
-         Logged in!
-         Token: ${accessToken.token}
-         User id: ${accessToken.userId}
-         Expires: ${accessToken.expires}
-         Permissions: ${accessToken.permissions}
-         Declined permissions: ${accessToken.declinedPermissions}''');
-
+        final token = result.accessToken.token;
+        final graphResponse = await http.get(
+            'https://graph.facebook.com/v2.12/me?fields=name,picture,email&access_token=${token}');
+        final profile = JSON.jsonDecode(graphResponse.body);
+        print(profile);
+        setState(() {
+          userProfile = profile;
+          _isLoggedIn = true;
+        });
         break;
 
       case FacebookLoginStatus.cancelledByUser:
-        _showMessage('Login cancelled by the user.');
+        setState(() => _isLoggedIn = false );
         break;
       case FacebookLoginStatus.error:
-        _showMessage('Something went wrong with the login process.\n'
-            'Here\'s the error Facebook gave us: ${result.errorMessage}');
+        setState(() => _isLoggedIn = false );
         break;
     }
+
   }
+
   _logout(){
-    facebookLogin.logOut();
-    setState(() {
-      _isLoggedIn = false;
-    });
-
-  }
-  void _showMessage(String message) {
-    setState(() {
-      _message = message;
-    });
+  facebookLogin.logOut();
+  setState(() {
+  _isLoggedIn = false;
+  });
   }
 
+    @override
+    Widget build(BuildContext context) {
+      // TODO: implement build
+      return MaterialApp(
+        debugShowCheckedModeBanner: false,
+        home: Scaffold(
+          body: Center(
+            child: _isLoggedIn
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Image.network(
+                        userProfile["picture"]["data"]["url"],
+                        height: 50.0,
+                        width: 50.0,
+                      ),
+                      Text(userProfile["name"]),
+                      OutlineButton(
+                        child: Text("Logout"),
+                        onPressed: (){
+                          _logout();
+                        },
+                      )
+                    ],
+                  )
 
-  @override
-  Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays(SystemUiOverlay.values);
-    return new Scaffold(
-      backgroundColor: Colors.lightGreen[400],
-      /*appBar: AppBar(
-        //title: Text("Beela"),
-        backgroundColor: Colors.lightGreen[400],
-      ),*/
-      body: Container(
-        width: double.infinity,
-        padding: EdgeInsets.all(10),
-        decoration: BoxDecoration(
-            border: Border.all(width: 0, color: Colors.white)
-        ),
-        child: _isLoggedIn
-          ? Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: <Widget>[
-              Padding(
-                padding: EdgeInsets.all(15),
-              ),
-              Image.network(
-                userProfile["picture"]["data"]["url"],
-                height: 50.0,
-                width: 50.0,
-              ),
-              Text(userProfile["name"]),
-              //Image.asset("images/facebook.png", height: 70,),
-              Text(
-                "Continar o login com o seu Perfil",
-                  style: TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.black
+                : OutlineButton(
+                    child: Text("Login com o Facebook"),
+                    onPressed: () {
+                      _loginWithFB();
+                    },
                 ),
-              ),
-              Text(
-                "O LoginApp receberá seu perfil público.",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black
-                ),
-              ),
-              Text(
-                "Saber mais",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black
-                ),
-              ),
-              RaisedButton(
-                onPressed: () {
-                  _loginWithFB();
-                  setState(() {
-                    //_texto = "Login efetuado com sucesso";
-                  });
-                },
-                color: Colors.blue[900],
-                child: Text(
-                  "Login com Facebook",
-                  style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w500
-                  ),
-                ),
-              ),
-              Text(
-                "Isso não permite que o aplicativo seja postado no Facebook",
-                style: TextStyle(
-                    fontWeight: FontWeight.w500,
-                    color: Colors.black
-                ),
-              ),
-              //Text("Nome: $_texto ")
-            ],
-          )
-         : OutlineButton(
-            child: Text("Sair") ,
-            onPressed: (){
-              _logout();
-          },
+          ),
         ),
 
-        ),
       );
-
-
+    }
   }
-}
