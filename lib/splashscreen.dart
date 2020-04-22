@@ -14,7 +14,7 @@ class SplashPageState extends State<SplashPage> {
   }
 
   startSplashScreenTime() async {
-    var _duration = new Duration(seconds: 1);
+    var _duration = new Duration(seconds: 2);
     return new Timer(_duration, navigationToNextPage);
   }
 
@@ -34,18 +34,20 @@ class SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Image.asset("images/logo.png", height: 200,),
-              Text(
+              Image.asset("images/logo.png",
+                width: 400,
+                height: 220,
+              ),
+              /*Text(
                 "BeelaApp",
                 style: TextStyle(
-                    fontWeight: FontWeight.w500,
+                    fontWeight: FontWeight.w800,
                     fontSize: 50,
-                    decoration: TextDecoration.underline,
                     fontStyle: FontStyle.italic,
                     //height: 50,
-                    color: Colors.lightGreenAccent[400]
+                    color: Colors.lightGreenAccent[700]
                 ),
-              )
+              )*/
             ],
           ),
         )

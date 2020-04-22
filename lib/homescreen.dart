@@ -57,6 +57,7 @@ class HomePageState extends State<HomePage> {
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
+          backgroundColor: Colors.lightGreen[400],
           body: Center(
             child: _isLoggedIn
                 ? Column(
@@ -77,8 +78,18 @@ class HomePageState extends State<HomePage> {
                     ],
                   )
 
-                : OutlineButton(
-                    child: Text("Login com o Facebook"),
+                : RaisedButton(
+                    color: Colors.blue[800],
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(39)
+                    ),
+                    child: Text(
+                        "Login com o Facebook",
+                    style: TextStyle(
+                      fontSize: 17,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w800
+                    ),),
                     onPressed: () {
                       _loginWithFB();
                     },
