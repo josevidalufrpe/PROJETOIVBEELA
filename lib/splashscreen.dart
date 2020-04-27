@@ -26,18 +26,32 @@ class SplashPageState extends State<SplashPage> {
 
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIOverlays([]);
+    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+        statusBarColor: Colors.transparent,
+        statusBarBrightness: Brightness.light
+    ));
 
-    return Scaffold(
-        backgroundColor: Colors.black54,
-        body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Image.asset("images/logo.png",
-                width: 400,
-                height: 220,
-              ),
+
+
+    return MaterialApp(
+        debugShowCheckedModeBanner: false,
+
+        home: Scaffold(
+
+          backgroundColor: Colors.black54,
+          body: Container(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                SizedBox(
+                  width: 720,
+                  height: 240,
+
+                  child:Image.asset("images/logo.png",
+                    width: 40,
+                    height: 90,
+                ),
+                )
               /*Text(
                 "BeelaApp",
                 style: TextStyle(
@@ -51,6 +65,7 @@ class SplashPageState extends State<SplashPage> {
             ],
           ),
         )
+    )
       //child: new Image.asset("images/facebook.png", height: 100,),
     );
   }

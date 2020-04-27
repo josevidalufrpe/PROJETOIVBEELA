@@ -2,11 +2,17 @@ import 'package:beela/homescreen.dart';
 import 'package:beela/splashscreen.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 
 
-void main() => runApp(new MyApp(
-));
+void main() {
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+      statusBarColor: Colors.transparent,
+      statusBarBrightness: Brightness.light
+  ));
+  runApp(new MyApp());
+}
 
 
 

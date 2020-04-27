@@ -53,50 +53,72 @@ class HomePageState extends State<HomePage> {
 
     @override
     Widget build(BuildContext context) {
+      SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+          statusBarColor: Colors.transparent,
+          statusBarBrightness: Brightness.light
+      ));
       // TODO: implement build
       return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          backgroundColor: Colors.lightGreen[400],
-          body: Center(
-            child: _isLoggedIn
-                ? Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: <Widget>[
-                      Image.network(
-                        userProfile["picture"]["data"]["url"],
-                        height: 50.0,
-                        width: 50.0,
+          /*backgroundColor: Colors.lightGreen[400],*/
+          body: Container(
+            decoration: BoxDecoration(color: Color(0xff95d865)),
+            padding: EdgeInsets.only(
+                top: 60,
+                left: 40,
+                right: 40,
+            ),
+            child: Center(
+              child:SingleChildScrollView(
+
+
+
+
+                child: _isLoggedIn
+                  ? Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: <Widget>[
+                        Padding(
+                            padding: EdgeInsets.only(bottom: 32),
+                            child: Image.network(
+                              userProfile["picture"]["data"]["url"],
+                              height: 50.0,
+                              width: 50.0,
+                            ),
+                          ),
+                          Text(userProfile["name"]),
+                          OutlineButton(
+                            child: Text("Logout"),
+                            onPressed: (){
+                              _logout();
+                              },
+                            )
+                        ],
+                    )
+
+
+                  : RaisedButton(
+                      color: Colors.blue[800],
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(39)
                       ),
-                      Text(userProfile["name"]),
-                      OutlineButton(
-                        child: Text("Logout"),
-                        onPressed: (){
-                          _logout();
-                        },
-                      )
-                    ],
-                  )
-
-                : RaisedButton(
-                    color: Colors.blue[800],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(39)
-                    ),
-                    child: Text(
-                        "Login com o Facebook",
-                    style: TextStyle(
-                      fontSize: 17,
-                      color: Colors.white,
-                      fontWeight: FontWeight.w800
-                    ),),
-                    onPressed: () {
-                      _loginWithFB();
-                    },
+                      child: Text(
+                          "Login com o Facebook",
+                      style: TextStyle(
+                        fontSize: 17,
+                        color: Colors.white,
+                        fontWeight: FontWeight.w800
+                      ),),
+                      onPressed: () {
+                        _loginWithFB();
+                      },
+                  ),
                 ),
+              ),
+            ),
           ),
-        ),
 
-      );
+        );
     }
   }
