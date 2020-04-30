@@ -55,93 +55,153 @@ class HomePageState extends State<HomePage> {
         statusBarBrightness: Brightness.light));
     // TODO: implement build
     return Scaffold(
-        //debugShowCheckedModeBanner: false,
-        //home: Scaffold(
-        /*backgroundColor: Colors.lightGreen[400],*/
-        body: Container(
-            decoration: BoxDecoration(color: Color(0xff95d865)),
-            padding: EdgeInsets.only(
-              top: 60,
-              left: 40,
-              right: 40,
-            ),
-            child: Center(
-              child: SingleChildScrollView(
-                child: _isLoggedIn
-                    ? Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Container(
-                            width: 70,
-                            height: 70,
-                            decoration: BoxDecoration(
-                              shape: BoxShape.circle,
-                              image: DecorationImage(
-                                fit: BoxFit.fitWidth,
-                                image: NetworkImage(
-                                  userProfile["picture"]["data"]["url"],
+      //debugShowCheckedModeBanner: false,
+      //home: Scaffold(
+      /*backgroundColor: Colors.lightGreen[400],*/
+      body: Container(
+        decoration: BoxDecoration(color: Color(0xff95d865)),
+        padding: EdgeInsets.only(
+          top: 60,
+          left: 40,
+          right: 40,
+        ),
+        child: Center(
+          child: SingleChildScrollView(
+            child: _isLoggedIn
+                ? Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Container(
+                        width: 70,
+                        height: 70,
+                        decoration: BoxDecoration(
+                          shape: BoxShape.circle,
+                          image: DecorationImage(
+                            fit: BoxFit.fitWidth,
+                            image: NetworkImage(
+                              userProfile["picture"]["data"]["url"],
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(
+                        width: 20,
+                        height: 20,
+
+                        //Padding(
+                        //padding: EdgeInsets.only(bottom: 32),
+                      ),
+                      Text(
+                        userProfile["name"],
+                        style: TextStyle(fontWeight: FontWeight.w800),
+                      ),
+                      RaisedButton(
+                        color: Colors.blue[800],
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(39)),
+                        child: Text(
+                          "Sair",
+                          style: TextStyle(
+                              fontSize: 17,
+                              color: Colors.white,
+                              fontWeight: FontWeight.w800),
+                        ),
+                        onPressed: () {
+                          _logout();
+                        },
+                      )
+                    ],
+                  )
+                : Container(
+                    padding: EdgeInsets.all(6),
+                    //child: Center(
+                    child: Center(
+                      child: SingleChildScrollView(
+                        child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: <Widget>[
+                              Padding(
+                                  padding: EdgeInsets.only(bottom: 69),
+                                  //SizedBox(
+                                  //height: 80,
+                                  child: Image.asset(
+                                    "images/facebook.png",
+                                    width: 200,
+                                    height: 70,
+                                  )),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 35),
+                                child: Text(
+                                  "Continuar com o seu Perfil",
+                                  style: TextStyle(
+                                      fontSize: 22,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700),
                                 ),
                               ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 20,
-                            height: 20,
-
-                            //Padding(
-                            //padding: EdgeInsets.only(bottom: 32),
-                          ),
-                          Text(
-                            userProfile["name"],
-                            style: TextStyle(fontWeight: FontWeight.w800),
-                          ),
-                          RaisedButton(
-                            color: Colors.blue[800],
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(39)),
-                            child: Text(
-                              "Sair",
-                              style: TextStyle(
-                                  fontSize: 17,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w800),
-                            ),
-                            onPressed: () {
-                              _logout();
-                            },
-                          )
-                        ],
-                      )
-                    : Padding(
-                        padding: EdgeInsets.only(),
-                        child: Row(children: <Widget>[
-                          Column(children: <Widget>[
-                            SizedBox(
-                              width: 80,
-                              height: 100,
-                              child: Image.asset("images/facebook.png"),
-                            ),
-                            RaisedButton(
-                              color: Colors.blue[800],
-                              shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(39)),
-                              child: Text(
-                                "Login com o Facebook",
-                                style: TextStyle(
-                                    fontSize: 17,
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.w800),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 50),
+                                child: Text(
+                                  "O beelaApp receberá seu Perfil público",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                ),
                               ),
-                              onPressed: () {
-                                _loginWithFB();
-                              },
-                            ),
-                          ]),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 80),
+                                child: Text(
+                                  "Saber mais",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ),
 
-                        ]),
+                              //child: Image.asset("images/facebook.png"),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 80),
+                                child: RaisedButton.icon(
+                                  icon: Icon(
+                                    Icons.person,
+                                    color: Colors.white,
+                                  ),
+                                  color: Colors.blue[900],
+                                  shape: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(39)),
+                                  label: Text(
+                                    "Login com o Facebook ",
+                                    style: TextStyle(
+                                        fontSize: 17,
+                                        height: 1,
+                                        color: Colors.white,
+                                        fontWeight: FontWeight.w800),
+                                  ),
+                                  onPressed: () {
+                                    _loginWithFB();
+                                  },
+                                ),
+                              ),
+                              Padding(
+                                padding: EdgeInsets.only(bottom: 20),
+                                child: Text(
+                                  "Isso não permite que o aplicativo seja postado no Facebook",
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400),
+                                ),
+                              ),
+                            ]),
                       ),
-              ),
-              //),
-            )));
+                    ),
+                  ),
+            //),
+          ),
+        ),
+      ),
+    );
   }
 }
