@@ -96,7 +96,7 @@ class HomePageState extends State<HomePage> {
                         style: TextStyle(fontWeight: FontWeight.w800),
                       ),
                       RaisedButton(
-                        color: Colors.blue[800],
+                        color: Colors.blue[900],
                         shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(39)),
                         child: Text(
@@ -121,11 +121,11 @@ class HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Padding(
-                                  padding: EdgeInsets.only(bottom: 69),
+                                  padding: EdgeInsets.only(top: 16,bottom: 69),
                                   //SizedBox(
                                   //height: 80,
                                   child: Image.asset(
-                                    "images/facebook.png",
+                                    "images/Face.png",
                                     width: 200,
                                     height: 70,
                                   )),
@@ -140,7 +140,7 @@ class HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 50),
+                                padding: EdgeInsets.only(bottom: 30),
                                 child: Text(
                                   "O beelaApp receberá seu Perfil público",
                                   style: TextStyle(
@@ -150,7 +150,7 @@ class HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 80),
+                                padding: EdgeInsets.only(bottom: 60),
                                 child: Text(
                                   "Saber mais",
                                   style: TextStyle(
@@ -162,7 +162,7 @@ class HomePageState extends State<HomePage> {
 
                               //child: Image.asset("images/facebook.png"),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 80),
+                                padding: EdgeInsets.only(bottom: 60),
                                 child: RaisedButton.icon(
                                   icon: Icon(
                                     Icons.person,
@@ -185,7 +185,7 @@ class HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 20),
+                                padding: EdgeInsets.only(bottom: 50),
                                 child: Text(
                                   "Isso não permite que o aplicativo seja postado no Facebook",
                                   style: TextStyle(

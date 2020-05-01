@@ -1,5 +1,6 @@
 import 'package:beela/homescreen.dart';
 import 'package:beela/splashscreen.dart';
+import 'package:beela/telaprincipal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
       title: 'Principal',
       home: new SplashPage(),
       routes: <String, WidgetBuilder>{
-        '/HomePage': (BuildContext context)=> new HomePage()
+        '/HomePage': (BuildContext context)=> new telaprincipal()
       },
     );
 
