@@ -1,3 +1,4 @@
+import 'package:beela/telaprincipal.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -113,7 +114,7 @@ class HomePageState extends State<HomePage> {
                     ],
                   )
                 : Container(
-                    padding: EdgeInsets.all(6),
+                    padding: EdgeInsets.all(1.0),
                     //child: Center(
                     child: Center(
                       child: SingleChildScrollView(
@@ -121,11 +122,11 @@ class HomePageState extends State<HomePage> {
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Padding(
-                                  padding: EdgeInsets.only(top: 16,bottom: 69),
+                                  padding: EdgeInsets.only(top: 1,bottom: 60),
                                   //SizedBox(
                                   //height: 80,
                                   child: Image.asset(
-                                    "images/Face.png",
+                                    "images/facebook.png",
                                     width: 200,
                                     height: 70,
                                   )),
@@ -140,39 +141,84 @@ class HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 30),
-                                child: Text(
-                                  "O beelaApp receberá seu Perfil público",
-                                  style: TextStyle(
+                                padding: EdgeInsets.only(bottom: 0),
+                                child:Column(
+                                  children: <Widget>[
+                                      Text(
+                                          "O beelaApp receberá ",
+                                          style: TextStyle(
+                                          fontSize: 14,
+                                          color: Colors.black54,
+                                          fontWeight: FontWeight.w800,
+                                          //fontStyle: FontStyle.normal
+                                            ),
+                                    ),
+                                    Text("seu perfil público.",
+                                    style: TextStyle(
                                       fontSize: 14,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w400),
+                                      color: Colors.black54,
+                                      fontWeight: FontWeight.w800,
+                                    ),)
+                                  ],
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 60),
-                                child: Text(
-                                  "Saber mais",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w500),
-                                ),
+                                padding: EdgeInsets.only(bottom: 40),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: <Widget>[
+                                    Padding(
+                                      padding: EdgeInsets.all(30.0),
+                                      child: GestureDetector(
+                                        onTap: (){
+                                          Navigator.push(
+                                            context,MaterialPageRoute(builder: (context) => telaprincipal()),
+                                          );},
+                                          child: Row(
+                                              children: <Widget>[
+                                                SizedBox(
+                                                  width: 80,
+                                                ),
+                                                Icon(
+                                                  Icons.assignment,
+                                                  size: 15,
+                                                  color: Colors.black54,
+                                                  //color: Colors.black87,
+                                                ),
+                                                Text("Saber mais",
+                                                  style: TextStyle(
+                                                    color: Colors.black54,
+                                                    fontSize: 14,
+                                                    fontStyle: FontStyle.normal,
+                                                    fontWeight: FontWeight.w500
+
+                                                  ),
+                                                ),
+                                              ],
+                                      /*onPre: (){
+                                      Navigator.push(
+                                        context,MaterialPageRoute(builder: (context) => telaprincipal()),
+                                        );
+                                      //label:
+                                      //SystemNavigator.pop();
+                                      },*/
+                                    ),),
+                                ),],),
                               ),
 
                               //child: Image.asset("images/facebook.png"),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 60),
+                                padding: EdgeInsets.only(bottom: 35),
                                 child: RaisedButton.icon(
                                   icon: Icon(
                                     Icons.person,
                                     color: Colors.white,
                                   ),
                                   color: Colors.blue[900],
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(39)),
+                                  //shape: RoundedRectangleBorder(
+                                      //borderRadius: BorderRadius.circular(39)),
                                   label: Text(
-                                    "Login com o Facebook ",
+                                    "Continuar",
                                     style: TextStyle(
                                         fontSize: 17,
                                         height: 1,
@@ -185,23 +231,122 @@ class HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 50),
-                                child: Text(
-                                  "Isso não permite que o aplicativo seja postado no Facebook",
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.w400),
+                                padding: EdgeInsets.only(bottom: 0),
+                                child: Row(
+                                  //heightFactor: 1,
+                                  //widthFactor: 10,
+                                    //child: Row(
+                                      children: <Widget>[
+
+                                            SizedBox(
+                                              width: 0,
+                                              height: 10,),
+
+
+                                        Icon(
+                                            Icons.lock,
+                                        size: 15,
+                                          color: Colors.black54,
+
+                                        ),
+
+
+
+
+
+
+                                        /*Text("Isso não permite que o aplicativo seja postado no facebook",
+                                          style: TextStyle(
+                                              fontSize: 13,
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w800
+
+                                            ),
+                                          ),*/
+
+                                        Text("Isso não permite que o aplicativo seja postado",
+                                          style: TextStyle(
+                                            fontSize: 13,
+                                            color: Colors.black54,
+                                            fontStyle: FontStyle.normal,
+                                            fontWeight: FontWeight.w800,
+                                            ),
+
+                                        ),
+
+                                      /*onPre: (){
+                                      Navigator.push(
+                                        context,MaterialPageRoute(builder: (context) => telaprincipal()),
+                                        );
+                                      //label:
+                                      //SystemNavigator.pop();
+                                      },*/
+
+                                  ],
                                 ),
                               ),
-                            ]),
+                              Padding(
+                                padding: EdgeInsets.only(bottom:170),
+                                child:Row(
+                                  children: <Widget> [
+                                    Text("     no Facebook",
+                                    style: TextStyle(
+                                      fontStyle: FontStyle.normal,
+                                      fontWeight: FontWeight.w800,
+                                      fontSize: 13,
+                                      color: Colors.black54
+                                    ),),
+                              ],),),
+
+
+                              //),
+                              /*Padding(
+                                padding: EdgeInsets.only(top: 50,bottom: 80),
+                                child: Center(
+                                  heightFactor: 1,
+                                  widthFactor: 10,
+                                  child: GestureDetector(
+                                    onTap: (){
+                                      Navigator.push(
+                                        context,MaterialPageRoute(builder: (context) => telaprincipal()),
+                                      );
+                                    },
+                                    child: Row(
+                                      children: <Widget>[
+                                         Icon(
+                                            Icons.arrow_back_ios
+                                            ),
+                                            Text("Voltar para página anterior",
+                                            style: TextStyle(
+                                              color: Colors.black,
+                                              fontStyle: FontStyle.normal,
+                                              fontWeight: FontWeight.w800
+
+                                            ),),],
+                                          /*onPre: (){
+                                      Navigator.push(
+                                        context,MaterialPageRoute(builder: (context) => telaprincipal()),
+                                        );
+                                      //label:
+                                      //SystemNavigator.pop();
+                                      },*/
+                                        ),),
+                                ),
+                              ),*/
+                            ],
+                        ),
                       ),
                     ),
-                  ),
-            //),
+            ),
           ),
         ),
       ),
     );
+            //),
+
+
+
+
   }
 }

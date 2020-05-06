@@ -16,85 +16,91 @@ class _telaprincipalState extends State<telaprincipal> {
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.light));
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
     return Scaffold(
         //backgroundColor: Color(0xff95d865),
         body: Container(
+          decoration: BoxDecoration(color: Color(0xffC7D59F)),
             child: Center(
-      child: Column(
-        children: <Widget>[
-          Container(
-            padding: EdgeInsets.only(top: 70, bottom: 30),
-            height: 250,
-            decoration: BoxDecoration(color: Color(0xff95d865)),
-            child: Center(
-              child: Image.asset("images/foto.png"),
-            ),
-          ),
-
-
-          Padding(
-            padding: EdgeInsets.only(top: 20,bottom: 10),
-            child: GestureDetector(
-                child: Text(
-                  "Bem-vindo ao beela",
-                  style: TextStyle(
-                      fontSize: 21,
-                      color: Colors.black,
-                      fontWeight: FontWeight.w800),
+              child: Column(
+                children: <Widget>[
+                  Container(
+                    padding: EdgeInsets.only(top: 70, bottom: 30),
+                    height: 250,
+                    decoration: BoxDecoration(color: Color(0xff95d865)),
+                    child: Center(
+                      child: Image.asset("images/foto.png"),
+                  ),
                 ),
-                onTap: () {
 
-                }),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 90),
-            child: Text("Um aplicativo com recomendações de lazer"),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 90),
-            child: Text("Acesso exclusivo com conta do Facebook",
-            style: TextStyle(
-              color: Color(0xff95d865),
-              fontWeight: FontWeight.w600,
-              fontStyle: FontStyle.italic
-            ),),
-          ),
-          Padding(
-            padding: EdgeInsets.only(bottom: 10),
-            child: RaisedButton.icon(
-              icon: Icon(
-                Icons.sentiment_satisfied,
-                color: Colors.black,
-            ),
-            color: Color(0xff95d865),
-            label: Text('Entrar no App',
-            style: TextStyle(
-              color: Colors.black
-            ),),
-            onPressed: () {
-                Navigator.push(
-                  context,MaterialPageRoute(builder: (context)=> HomePage()),
-                );
-            },),
-          ),
 
-          Padding(
-            padding: EdgeInsets.only(bottom: 10),
-            child: RaisedButton.icon(
-              icon: Icon(
-                Icons.sentiment_dissatisfied,
-                color: Colors.black,
-              ),
-              color: Colors.red,
-              label: Text('Sair do App    ',
-                style: TextStyle(
-                    color: Colors.black
-                ),),
-              onPressed: () {
-                SystemNavigator.pop();
-              },),
-          ),
-        ],
+
+                Padding(
+                  padding: EdgeInsets.only(top: 20,bottom: 10),
+                    child: GestureDetector(
+                      child: Text(
+                          "Bem-vindo ao beela",
+                      style: TextStyle(
+                        fontSize: 21,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w800),
+                        ),
+                        onTap: () {
+
+                    }),
+                ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 90),
+                    child: Text("Um aplicativo com recomendações de lazer"),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 90),
+                    child: Text("Acesso exclusivo com conta do Facebook",
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.w600,
+                        fontStyle: FontStyle.italic
+                    ),),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 10),
+                      child: RaisedButton.icon(
+                        icon: Icon(
+                          Icons.sentiment_satisfied,
+                          color: Colors.black,
+                        ),
+                        color: Color(0xff95d865),
+                        label: Text('Entrar no App',
+                          style: TextStyle(
+                          color: Colors.black
+                        ),),
+                        onPressed: () {
+                          Navigator.push(
+                            context,MaterialPageRoute(builder: (context)=> HomePage()),
+                            );
+                      },),
+                  ),
+
+                  Padding(
+                      padding: EdgeInsets.only(bottom: 10),
+                      child: RaisedButton.icon(
+                        icon: Icon(
+                          Icons.sentiment_dissatisfied,
+                          color: Colors.black,
+                        ),
+                        color: Color(0xff95d865),
+                        label: Text('Sair do App    ',
+                          style: TextStyle(
+                            color: Colors.black
+                            ),),
+                        onPressed: () {
+                          SystemNavigator.pop();
+                        },),
+                      ),
+                  ],
 
         /*child: Text(
                   "Bem-vindo ao beela",
@@ -107,7 +113,7 @@ class _telaprincipalState extends State<telaprincipal> {
                     decoration: TextDecoration.none,
                   ),
                 ),*/
-      ),
+              ),
       /*Column(
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: <Widget>[

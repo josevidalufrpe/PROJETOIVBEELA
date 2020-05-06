@@ -30,6 +30,10 @@ class SplashPageState extends State<SplashPage> {
         statusBarColor: Colors.transparent,
         statusBarBrightness: Brightness.light
     ));
+    SystemChrome.setPreferredOrientations([
+      DeviceOrientation.portraitUp,
+      DeviceOrientation.portraitDown,
+    ]);
 
 
 

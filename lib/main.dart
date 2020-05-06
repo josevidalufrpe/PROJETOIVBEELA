@@ -12,6 +12,10 @@ void main() {
       statusBarColor: Colors.transparent,
       statusBarBrightness: Brightness.light
   ));
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
   runApp(new MyApp());
 }
 
