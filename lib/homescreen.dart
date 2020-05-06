@@ -6,6 +6,7 @@ import 'package:flutter_facebook_login/flutter_facebook_login.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert' as JSON;
 import 'dart:async';
+import 'package:url_launcher/url_launcher.dart';
 
 class HomePage extends StatefulWidget {
   @override
@@ -170,10 +171,14 @@ class HomePageState extends State<HomePage> {
                                     Padding(
                                       padding: EdgeInsets.all(30.0),
                                       child: GestureDetector(
-                                        onTap: (){
-                                          Navigator.push(
-                                            context,MaterialPageRoute(builder: (context) => telaprincipal()),
-                                          );},
+                                        onTap: ()  {
+                                          _launchURL();
+
+
+                                          /*Navigator.push(
+                                            context,MaterialPageRoute(builder: (context) => _launchURL()),
+                                          );*/
+                                          },
                                           child: Row(
                                               children: <Widget>[
                                                 SizedBox(
@@ -202,8 +207,11 @@ class HomePageState extends State<HomePage> {
                                       //label:
                                       //SystemNavigator.pop();
                                       },*/
-                                    ),),
-                                ),],),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
 
                               //child: Image.asset("images/facebook.png"),
@@ -349,4 +357,13 @@ class HomePageState extends State<HomePage> {
 
 
   }
+}
+_launchURL() async{
+  const url = 'https://www.facebook.com/about/privacy/update';
+  if (await canLaunch(url)) {
+    await launch(url);
+  } else {
+    throw 'Could not launch $url';
+  }
+
 }
