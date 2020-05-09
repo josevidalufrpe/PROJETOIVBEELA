@@ -53,11 +53,11 @@ class _telaprincipalState extends State<telaprincipal> {
                     }),
                 ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 90),
+                    padding: EdgeInsets.only(bottom: 40),
                     child: Text("Um aplicativo com recomendações de lazer"),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 90),
+                    padding: EdgeInsets.only(bottom: 40),
                     child: Text("Acesso exclusivo com conta do Facebook",
                       style: TextStyle(
                         color: Colors.black,
@@ -66,40 +66,55 @@ class _telaprincipalState extends State<telaprincipal> {
                     ),),
                   ),
                   Padding(
-                    padding: EdgeInsets.only(bottom: 10),
-                      child: RaisedButton.icon(
-                        icon: Icon(
-                          Icons.sentiment_satisfied,
-                          color: Colors.black,
+                    padding: EdgeInsets.only(bottom: 1),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+
+                            RaisedButton.icon(
+                              icon: Icon(
+                              Icons.sentiment_satisfied,
+                              color: Colors.black,
+                            ),
+                            color: Color(0xff95d865),
+                            label: Text('Entrar no App',
+                              style: TextStyle(
+                              color: Colors.black
+                              ),
+                            ),
+                            onPressed: () {
+                              Navigator.push(
+                                context,MaterialPageRoute(builder: (context)=> HomePage()),
+                                );
+                              },
+                            ),
+
+                          ],
                         ),
-                        color: Color(0xff95d865),
-                        label: Text('Entrar no App',
-                          style: TextStyle(
-                          color: Colors.black
-                        ),),
-                        onPressed: () {
-                          Navigator.push(
-                            context,MaterialPageRoute(builder: (context)=> HomePage()),
-                            );
-                      },),
-                  ),
+                      ),
 
                   Padding(
                       padding: EdgeInsets.only(bottom: 10),
-                      child: RaisedButton.icon(
-                        icon: Icon(
-                          Icons.sentiment_dissatisfied,
-                          color: Colors.black,
-                        ),
-                        color: Color(0xff95d865),
-                        label: Text('Sair do App    ',
+                      child:Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                        RaisedButton.icon(
+                            icon: Icon(
+                              Icons.sentiment_dissatisfied,
+                              color: Colors.black,
+                            ),
+                            color: Color(0xff95d865),
+                            label: Text('Sair do App    ',
                           style: TextStyle(
                             color: Colors.black
                             ),),
                         onPressed: () {
                           SystemNavigator.pop();
-                        },),
+                            },
+                          ),
+                        ],
                       ),
+                    ),
                   ],
 
         /*child: Text(

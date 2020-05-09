@@ -57,6 +57,9 @@ class HomePageState extends State<HomePage> {
         statusBarBrightness: Brightness.light));
     // TODO: implement build
     return Scaffold(
+      /*appBar: AppBar(
+        title: Text("Menu"),
+      ),*/
       //debugShowCheckedModeBanner: false,
       //home: Scaffold(
       /*backgroundColor: Colors.lightGreen[400],*/
@@ -118,9 +121,9 @@ class HomePageState extends State<HomePage> {
                     padding: EdgeInsets.all(1.0),
                     //child: Center(
                     child: Center(
-                      child: SingleChildScrollView(
+                      //child: SingleChildScrollView(
                         child: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.stretch,
                             children: <Widget>[
                               Padding(
                                   padding: EdgeInsets.only(top: 1,bottom: 60),
@@ -133,16 +136,18 @@ class HomePageState extends State<HomePage> {
                                   )),
                               Padding(
                                 padding: EdgeInsets.only(bottom: 35),
+                                child: Center(
                                 child: Text(
                                   "Continuar com o seu Perfil",
                                   style: TextStyle(
-                                      fontSize: 22,
+                                      fontSize: 17,
                                       color: Colors.black,
                                       fontWeight: FontWeight.w700),
                                 ),
+                                ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 0),
+                                padding: EdgeInsets.only(bottom: 20),
                                 child:Column(
                                   children: <Widget>[
                                       Text(
@@ -164,33 +169,28 @@ class HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 40),
-                                child: Column(
+                                padding: EdgeInsets.only(top: 5, bottom: 30),
+                                child: Row(
+                                  //child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: <Widget>[
-                                    Padding(
-                                      padding: EdgeInsets.all(30.0),
-                                      child: GestureDetector(
-                                        onTap: ()  {
-                                          _launchURL();
-
-
-                                          /*Navigator.push(
-                                            context,MaterialPageRoute(builder: (context) => _launchURL()),
-                                          );*/
-                                          },
-                                          child: Row(
-                                              children: <Widget>[
-                                                SizedBox(
-                                                  width: 80,
-                                                ),
-                                                Icon(
-                                                  Icons.assignment,
-                                                  size: 15,
-                                                  color: Colors.black54,
-                                                  //color: Colors.black87,
-                                                ),
-                                                Text("Saber mais",
+                                    Expanded(
+                                      flex: 0,
+                                       child:Container(
+                                        child: Icon(
+                                         Icons.assignment,
+                                         size: 15,
+                                         color: Colors.black54
+                                       ),
+                                       height: 30,),),
+                                       Expanded(
+                                         flex: 0,
+                                       child:Container(
+                                        child: GestureDetector(
+                                          onTap: ()  {
+                                            _launchURL();
+                                            },
+                                            child: Text("Saber mais",
                                                   style: TextStyle(
                                                     color: Colors.black54,
                                                     fontSize: 14,
@@ -199,20 +199,14 @@ class HomePageState extends State<HomePage> {
 
                                                   ),
                                                 ),
-                                              ],
-                                      /*onPre: (){
-                                      Navigator.push(
-                                        context,MaterialPageRoute(builder: (context) => telaprincipal()),
-                                        );
-                                      //label:
-                                      //SystemNavigator.pop();
-                                      },*/
+
+                                          ),
                                         ),
                                       ),
-                                    ),
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
+                              //),
 
                               //child: Image.asset("images/facebook.png"),
                               Padding(
@@ -239,62 +233,36 @@ class HomePageState extends State<HomePage> {
                                 ),
                               ),
                               Padding(
-                                padding: EdgeInsets.only(bottom: 0),
+                                padding: EdgeInsets.only(bottom: 60),
                                 child: Row(
-                                  //heightFactor: 1,
-                                  //widthFactor: 10,
-                                    //child: Row(
-                                      children: <Widget>[
-
-                                            SizedBox(
-                                              width: 0,
-                                              height: 10,),
-
-
-                                        Icon(
-                                            Icons.lock,
+                                  //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: <Widget>[
+                                    Expanded(
+                                    flex:1,
+                                    child: Container(
+                                      child: Icon(
+                                        Icons.lock,
                                         size: 15,
-                                          color: Colors.black54,
-
-                                        ),
-
-
-
-
-
-
-                                        /*Text("Isso não permite que o aplicativo seja postado no facebook",
-                                          style: TextStyle(
+                                        color: Colors.black54,
+                                      ),
+                                    height: 30,),),
+                                        Expanded(
+                                          flex: 9,
+                                        child: Container(
+                                          child:Text("Isso não permite que o aplicativo seja postado no Facebook",
+                                            style: TextStyle(
                                               fontSize: 13,
-                                              color: Colors.black,
+                                              color: Colors.black54,
                                               fontStyle: FontStyle.normal,
-                                              fontWeight: FontWeight.w800
-
+                                              fontWeight: FontWeight.w800,
+                                              ),
                                             ),
-                                          ),*/
-
-                                        Text("Isso não permite que o aplicativo seja postado",
-                                          style: TextStyle(
-                                            fontSize: 13,
-                                            color: Colors.black54,
-                                            fontStyle: FontStyle.normal,
-                                            fontWeight: FontWeight.w800,
-                                            ),
-
+                                          ),
                                         ),
-
-                                      /*onPre: (){
-                                      Navigator.push(
-                                        context,MaterialPageRoute(builder: (context) => telaprincipal()),
-                                        );
-                                      //label:
-                                      //SystemNavigator.pop();
-                                      },*/
-
-                                  ],
+                                    ],
+                                  ),
                                 ),
-                              ),
-                              Padding(
+                              /*Padding(
                                 padding: EdgeInsets.only(bottom:170),
                                 child:Row(
                                   children: <Widget> [
@@ -305,7 +273,8 @@ class HomePageState extends State<HomePage> {
                                       fontSize: 13,
                                       color: Colors.black54
                                     ),),
-                              ],),),
+                              ],),
+                              ),*/
 
 
                               //),
@@ -344,7 +313,7 @@ class HomePageState extends State<HomePage> {
                               ),*/
                             ],
                         ),
-                      ),
+                      //),
                     ),
             ),
           ),
